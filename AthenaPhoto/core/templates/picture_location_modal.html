@@ -1,0 +1,46 @@
+{% load static %}
+
+<div id="pictureLocationModalID" class="modal fade" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+            <div class="modal-header" style="margin-bottom:20px;">
+                <h5 class="modal-title">{{ current_picture.title }}</h5>
+
+            </div>
+
+            <div class="tab-content card-body">
+                <div class="tab-pane active fade show">
+                    <div class="card-body py-0">
+
+                        <form class="form-horizontal">
+
+                            <div class="modal-body col-md-12">
+
+                                <div class="map" id="mapid" style="height: 400px; width: 100%;display: inline-block;">
+                                </div>
+
+                                <div class="row col-md-12" style="margin-top: 30px;">
+
+                                    <input type="hidden" class="d-none" id="pictureLat"
+                                           value="{{ current_picture.latitude }}">
+
+                                    <input type="hidden" class="d-none" id="pictureLon"
+                                           value="{{ current_picture.longitude }}">
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class=" modal-footer">
+                    <button type="button" class="btn bg-danger" data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

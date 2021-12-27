@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <style>
+        @font-face {
+            font-family: Sahel;
+            src: url("{% static 'assets/fonts/Sahel.woff' %}");
+        }
+
+        body {
+            font-family: Sahel !important;
+        }
+
+    </style>
+
+    {% block header_ref %}
+    {% endblock %}
+    {% include 'includes/_HeaderReferences.html' %}
+    {% block js_ref %}
+    {% endblock %}
+
+</head>
+
+<body style="text-align: left;">
+
+{% include "includes/Header.html" %}
+{% include 'includes/messages.html' %}
+
+
+<!-- Page content -->
+<div class="page-content">
+
+    <div class="content-wrapper">
+
+        <!-- Bottom full width position -->
+        <div class="mb-3">
+            <div class="page-header page-header-light"
+                 style="border-left: 1px solid #ddd; border-right: 1px solid #ddd; margin-bottom: 0;">
+
+                {% block my_breadcrumb %}
+
+                {% endblock my_breadcrumb %}
+
+            </div>
+        </div>
+        <!-- /bottom full width position -->
+        <!-- Content area -->
+        <div class="content pt-0">
+
+            {% block content %}
+
+            {% endblock content %}
+
+        </div>
+
+    </div>
+</div>
+<!-- /page content -->
+
+
+{% include "includes/Footer.html" %}
+
+{% include 'includes/_FooterReferences.html' %}
+{% block js_scripts %}{% endblock %}
+{% block footer_ref %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block title %} pictures list {% endblock %}
+
+{% block header_ref %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+{% endblock %}
+
+{% block js_ref %}
+    <script src="{% static 'global_assets/js/main/jquery.min.js' %}"></script>
+    <script src="{% static 'global_assets/js/main/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'global_assets/js/plugins/loaders/blockui.min.js' %}"></script>
+
+    <script src="{% static 'global_assets/js/plugins/media/fancybox.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.js' %}"></script>
+    <script src="{% static 'global_assets/js/demo_pages/gallery.js' %}"></script>
+
+{% endblock %}
+
+{% block footer_ref %}
+    <script src="{% static 'assets/js/picture_location_modal.js' %}"></script>
+{% endblock %}
+
+{% block my_breadcrumb %}
+    <div class="page-header-content header-elements-md-inline"
+         style="max-height: 60px;display: flex;align-items: center;">
+        <div class="page-title">
+            <h5>
+                <i class="icon-arrow-right6 mr-2"></i> <span class="font-weight-semibold">pictures list</span>
+            </h5>
+        </div>
+    </div>
+
+    <div class="breadcrumb-line header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+
+                <a href="{% url 'core:home' %}" style="color: blue;">
+                    <i class="icon-home2"></i>
+                    home
+                </a>
+
+                {% if user_is_authenticated %}
+                    <a href="{% url 'core:logout' %}" style="color: blue;margin-left: 30px;">
+                        <i class="icon-exit"></i>
+                        logout
+                    </a>
+
+                    <a href="{% url 'core:category_management' %}" style="color: blue;margin-left: 30px;">
+                        <i class="icon-list2"></i>
+                        category management
+                    </a>
+
+                    <a href="{% url 'core:create_category' %}" style="color: blue;margin-left: 30px;">
+                        <i class="icon-add-to-list"></i>
+                        create new category
+                    </a>
+
+                    <a href="{% url 'core:add_new_picture' %}" style="color: blue;margin-left: 30px;">
+                        <i class="icon-add-to-list"></i>
+                        add new picture
+                    </a>
+
+                {% else %}
+                    <a href="{% url 'core:login' %}" style="color: blue;margin-left: 30px;">
+                        <i class="icon-enter"></i>
+                        login
+                    </a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock my_breadcrumb %}
+{% block content %}
+    {% include 'picture_location_modal.html' %}
+    <div class="card">
+        <div class="card-header header-elements-inline h-4" style="background-color:#e4e6e7;padding:8px;">
+            <h6 class="card-title">pictures list</h6>
+        </div>
+
+        <div class="tab-pane" id="user_change_password_form">
+            <div class="card-body py-0">
+                <div class="row">
+
+                    <form method="post" action="{% url 'core:home' %}" class="col-md-12"
+                          id="getSelectedCategoryPicturesForm">
+                        {% csrf_token %}
+
+                        <fieldset style="margin-top: 10px;">
+
+                            <div class="row col-md-12" style="margin-top: 10px;overflow-x: auto;">
+
+                                <div class="col-md-3">
+                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                        <label for="category_selection">choose category :</label>
+                                        <select id="category_selection"
+                                                class="form-control border-bottom-light border-1 col-md-12"
+                                                style="direction: ltr;"
+                                                name="category">
+                                            <option value="">---------------------------------------------</option>
+                                            {% for category in all_categories %}
+                                                <option value="{{ category.uuid }}"
+                                                        {% if selected_category == category %}
+                                                        selected
+                                                        {% endif %}
+                                                >
+                                                    {{ category.name }}
+                                                </option>
+                                            {% endfor %}
+
+                                        </select>
+                                        <span style="color: red"
+                                              id="category_selection_err">{{ form.category_selection.errors }}</span>
+                                    </div>
+                                </div>
+
+
+                                <div style="display: grid;padding-top: 8px;">
+                                    <a type="submit" style="margin: auto;"
+                                       onclick="picturesListSelectCategory(event);"
+                                       class="btn btn-outline bg-slate-600 text-slate-600 border-slate-600 align-middle">
+                                        submit
+                                    </a>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="card" style="padding: 20px;">
+        <div class="row">
+            {% if all_pictures %}
+
+                {% for picture in all_pictures %}
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-img-actions mx-1 mt-1">
+                                <img class="card-img img-fluid"
+                                     src="{{ picture.image.url }}" alt="">
+                                <div class="card-img-actions-overlay card-img">
+                                    <a href="{{ picture.image.url }}"
+                                       class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"
+                                       data-popup="lightbox" rel="group">
+                                        <i class="icon-zoomin3"></i>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="d-flex align-items-start flex-nowrap">
+                                    <div>
+                                        {% if picture.title_length > 25 %}
+                                            <div class="font-weight-semibold mr-2"
+                                                 title="{{ picture.title }}">{{ picture.title|slice:":27" }} . . .
+                                            </div>
+                                        {% else %}
+                                            <div class="font-weight-semibold mr-2"
+                                                 title="{{ picture.title }}">{{ picture.title }}
+                                            </div>
+                                        {% endif %}
+
+                                        <span class="font-size-sm text-muted">Size: {{ picture.image_size }}</span>
+                                    </div>
+
+                                    <div style="position:absolute; right:30px;"
+                                         class="list-icons list-icons-extended ml-auto">
+                                        <a href="{{ picture.image.url }}" class="list-icons-item" title="download"
+                                           download><i
+                                                class="icon-download top-0"
+                                                style="color: green;"></i></a>
+                                        &nbsp;&nbsp;
+                                        {% if user_is_authenticated %}
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="picture_uuid" value="{{ picture.uuid }}">
+                                                <button type="submit" class="list-icons-item" title="delete"
+                                                        style="border: 0; background-color: white;"
+                                                >
+                                                    <i class="icon-bin top-0"
+                                                       style="color: red;"></i>
+                                                </button>
+                                            </form>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 10px;">
+
+                                    <a href="" data-toggle="modal" title="location" onclick="picture_location_btn(this)"
+                                       data-picture_uuid="{{ picture.uuid }}">
+
+                                    <span class="badge badge-primary"
+                                          style="height: 25px;padding-top: 5px;font-size: 15px">Location </span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>there is no picture for this category.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

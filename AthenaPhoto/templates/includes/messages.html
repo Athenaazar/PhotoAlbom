@@ -1,0 +1,8 @@
+<script>
+    let alerts = [];
+    $(document).ready(function () {
+        {% for message in messages %}
+            alerts.push({'text': '{{ message.message }}', 'type': '{{ message.tags }}'});
+        {% endfor %}
+    });
+</script>
