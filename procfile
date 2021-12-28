@@ -1,2 +1,2 @@
-web: gunicorn AthenaPhoto.wsgi:application --log-file -
+web gunicorn AthenaPhoto.wsgi:application --log-file -
 heroku ps:scale web=1
