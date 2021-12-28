@@ -39,7 +39,7 @@ This simple photo album website is for a photographer(admin) to upload him/her p
 
 The website consists of 6 unique pages:
 
-- Homepage : users can select category and see all photos assigned to selected category, download photo if they like, 
+- Homepage : <p>users can select category and see all photos assigned to selected category, download photo if they like, </p>
 - Login Page 
 - About us
 - Menu
