@@ -14,6 +14,8 @@ from pathlib import Path
 
 from .config import *
 
+# web:gunicorn AthenaPhoto.wsgi --log-file -
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = BASE_DIR
 
