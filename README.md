@@ -39,11 +39,11 @@ This simple photo album website is for a photographer(admin) to upload him/her p
 
 The website consists of 6 unique pages:
 
-- Homepage : <p>users can select category and see all photos assigned to selected category, download photo if they like, </p>
+- Homepage : <p> - users can select category and see all photos assigned to selected category, download photo if they like, see the location of photo. </p>
 - Login Page 
-- About us
-- Menu
-- Event
-- Gallery
+- Add New Picture : <p> - admin can add new photo . </p>
+- Add Category : <p> - admin can add new category . </p>
+- Category Management : <p> - admin can see all created categories and delete them . </p>
+
  
 
