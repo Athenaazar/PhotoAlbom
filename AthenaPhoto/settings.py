@@ -29,7 +29,7 @@ DEBUG = False
 CACHE_EXPIRE_TIME_ONE_HOUR = 5 * 60  # seconds
 
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'athena-photo-album.herokuapp.com']
 
 # Application definition
 
