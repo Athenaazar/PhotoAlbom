@@ -37,10 +37,10 @@ This simple photo album website is for a photographer(admin) to upload him/her p
  
  <h2>Features & Pages</h2>
 
-The website consists of 6 unique pages:
+The website consists of 5 unique pages:
 
 - Homepage : <p> - users can select category and see all photos assigned to selected category, download photo if they like, see the location of photo. </p>
-- Login Page 
+- Login Page : <p> - admin can login and create category and photo . </p>
 - Add New Picture : <p> - admin can add new photo . </p>
 - Add Category : <p> - admin can add new category . </p>
 - Category Management : <p> - admin can see all created categories and delete them . </p>
