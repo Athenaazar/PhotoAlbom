@@ -3,6 +3,8 @@ This simple photo album website is for a photographer(admin) to upload him/her p
 <h2>Created Pages</h2>
 
 <h4>Add Category</h4>
+
+
 ![Screenshot](./add_category.png)
 
 
