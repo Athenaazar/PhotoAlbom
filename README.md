@@ -8,3 +8,26 @@ This simple photo album website is for a photographer(admin) to upload him/her p
 ![Screenshot](./add_category.png)
 
 
+<h4>Category Management</h4>
+
+
+![Screenshot](./category_management.png)
+
+
+<h4>Show All Photos</h4>
+
+
+![Screenshot](./all_pictures.png)
+
+
+<h4>Show Add Photo</h4>
+
+
+![Screenshot](./add_picture.png)
+
+
+<h4>Show All Photos</h4>
+
+
+![Screenshot](./all_pictures.png)
+
