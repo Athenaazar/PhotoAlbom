@@ -32,6 +32,7 @@ This simple photo album website is for a photographer(admin) to upload him/her p
  <h3>Docker</h3> - for developing, shipping, and running application and also deliver software quickly.
  <h3>Bootstrap</h3>
  <h3>jQuery</h3>
+ <h3>Leaflet Map</h3> - to select and display the location of photos.
  
  
  
