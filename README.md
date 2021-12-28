@@ -4,10 +4,12 @@ This simple photo album website is for a photographer(admin) to upload him/her p
 
 <h4>Add Category</h4>
 ![Screenshot](./add_category.png)
-##
+
+
 <h4>Category Management</h4>
 ![Screenshot](./category_management.png)
-##
+
+
 <h4>Category Management</h4>
 ![Screenshot](./category_management.png)
 
