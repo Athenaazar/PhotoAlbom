@@ -24,11 +24,11 @@ This simple photo album website is for a photographer(admin) to upload him/her p
 
 
 
-<h3>HTML<h3> - to create web pages.
+ <h3>HTML<h3> - to create web pages.
  <h3>CSS</h3> - to styling.
-<h3>JavaScript</h3> - to to create dynamically updating content.
+ <h3>JavaScript</h3> - to to create dynamically updating content.
  <h3>Python</h3> - to handle the 'behind-the-scenes' functionality of website.
-<h3>Django</h3> - to assist in development, providing standard, low-level functionality.
+ <h3>Django</h3> - to assist in development, providing standard, low-level functionality.
  
  
 
