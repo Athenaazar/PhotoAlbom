@@ -24,7 +24,7 @@ This simple photo album website is for a photographer(admin) to upload him/her p
 
 
 
- <h3>HTML<h3> - to create web pages.
+ <h3>HTML</h3> - to create web pages.
  <h3>CSS</h3> - to styling.
  <h3>JavaScript</h3> - to to create dynamically updating content.
  <h3>Python</h3> - to handle the 'behind-the-scenes' functionality of website.
@@ -32,4 +32,18 @@ This simple photo album website is for a photographer(admin) to upload him/her p
  <h3>Docker</h3> - for developing, shipping, and running application and also deliver software quickly.
  <h3>Bootstrap</h3>
  <h3>jQuery</h3>
+ 
+ 
+ 
+ <h2>Features & Pages</h2>
+
+The website consists of 6 unique pages:
+
+- Homepage : users can select category and see all photos assigned to selected category, download photo if they like, 
+- Login Page 
+- About us
+- Menu
+- Event
+- Gallery
+ 
 
