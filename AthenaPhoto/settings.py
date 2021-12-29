@@ -14,7 +14,7 @@ from pathlib import Path
 
 from .config import *
 
-import django_heroku
+# import django_heroku
 
 # web:gunicorn AthenaPhoto.wsgi --log-file -
 
@@ -148,5 +148,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
