@@ -14,9 +14,8 @@ from pathlib import Path
 
 from .config import *
 
-# import django_heroku
+import django_heroku
 
-# web:gunicorn AthenaPhoto.wsgi --log-file -
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = BASE_DIR
@@ -148,5 +147,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 
