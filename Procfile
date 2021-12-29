@@ -1,4 +1,4 @@
-web: python manage.py runserver 0.0.0.0:$PORT
+web:gunicorn AthenaPhoto.wsgi
 heroku buildpacks:clear
 heroku buildpacks:add --index heroku/python
-heroku ps:scale web=1
+heroku ps: scale web = 1
