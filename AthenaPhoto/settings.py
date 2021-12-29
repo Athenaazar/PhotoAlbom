@@ -14,7 +14,6 @@ from pathlib import Path
 
 from .config import *
 
-import dj_database_url
 import django_heroku
 
 # web:gunicorn AthenaPhoto.wsgi --log-file -
