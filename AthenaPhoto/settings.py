@@ -14,6 +14,9 @@ from pathlib import Path
 
 from .config import *
 
+import dj_database_url
+import django_heroku
+
 # web:gunicorn AthenaPhoto.wsgi --log-file -
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,6 +35,7 @@ CACHE_EXPIRE_TIME_ONE_HOUR = 5 * 60  # seconds
 
 
 ALLOWED_HOSTS = ['127.0.0.1', 'athena-photo-album.herokuapp.com']
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -137,7 +141,12 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())
