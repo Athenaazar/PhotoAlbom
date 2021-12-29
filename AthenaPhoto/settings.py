@@ -16,7 +16,6 @@ from .config import *
 
 import django_heroku
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = BASE_DIR
 
@@ -30,7 +29,6 @@ SECRET_KEY = SECRET_KEY
 DEBUG = False
 
 CACHE_EXPIRE_TIME_ONE_HOUR = 5 * 60  # seconds
-
 
 ALLOWED_HOSTS = ['127.0.0.1', 'athena-photo-album.herokuapp.com']
 # ALLOWED_HOSTS = ['*']
@@ -46,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core.apps.CoreConfig',
-
 
 ]
 
@@ -64,7 +61,6 @@ MIDDLEWARE = [
 ]
 
 LOGIN_URL = '/login/'
-
 
 ROOT_URLCONF = 'AthenaPhoto.urls'
 
@@ -139,8 +135,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+DISABLE_COLLECTSTATIC = 1
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -148,4 +143,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
-
